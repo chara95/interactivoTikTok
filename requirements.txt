@@ -3,4 +3,5 @@ Flask-SocketIO
 python-engineio
 Flask-Cors
 simple-websocket
-gunicorn  # Añadimos gunicorn para un despliegue más robusto en Render
+gunicorn  
+geventwebsocket
