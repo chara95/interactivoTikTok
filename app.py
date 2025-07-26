@@ -1,4 +1,8 @@
 # app.py
+
+import eventlet 
+eventlet.monkey_patch() 
+
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
@@ -78,14 +82,13 @@ def test_disconnect():
     print("Cliente Socket.IO desconectado")
 
 if __name__ == '__main__':
-    # En desarrollo local, usamos socketio.run
+    # En desarrollo local
     socketio.run(app, debug=True, port=5000)
 else:
-    # En producción (como en Render), usamos un WSGI server como Gunicorn
-    # Render asignará un puerto a través de la variable de entorno PORT
-    # Flask-SocketIO internamente usa werkzeug o gevent para el WSGI server
-    # Si usas gunicorn, el comando de inicio en Render será 'gunicorn app:app --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker -b 0.0.0.0:$PORT'
-    pass # No necesitas poner nada aquí si el comando de inicio en Render es el que maneja todo.
-         # Esto solo es para aclarar que el if __name__ == '__main__' es para local.
+    # Este bloque se ejecuta cuando la aplicación es iniciada por un servidor WSGI como Gunicorn.
+    # Flask-SocketIO se inicializará para usar Eventlet si lo encuentra.
+    # No necesitas llamar a socketio.run() aquí, Gunicorn lo manejará.
+    pass # Simplemente deja este bloque como está o incluso puedes eliminarlo si solo tienes el if __name__
+
 
   
