@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Interacciones TikTok</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="panel-container">
+       
+        <div class="winners-panel">
+            <!-- <h2>🏆 Ganadores 🏆</h2> -->
+            <div class="winners-list">
+                <div class="winner-item" id="winner-colombia">
+                    <div class="winner-flag flag" id="flag-colombia-winner"></div>
+                    <span class="winner-score" id="score-colombia">0</span>
+                    <span class="winner-crown" id="crown-colombia">👑</span>
+                </div>
+
+                <div class="winner-item" id="winner-mexico">
+                    <div class="winner-flag flag" id="flag-mexico-winner"></div>
+                    <span class="winner-score" id="score-mexico">0</span>
+                    <span class="winner-crown" id="crown-mexico">👑</span>
+                </div>
+
+                <div class="winner-item" id="winner-espana">
+                    <div class="winner-flag flag" id="flag-espana-winner"></div>
+                    <span class="winner-score" id="score-espana">0</span>
+                    <span class="winner-crown" id="crown-espana">👑</span>
+                </div>
+
+                <div class="winner-item" id="winner-argentina">
+                    <div class="winner-flag flag" id="flag-argentina-winner"></div>
+                    <span class="winner-score" id="score-argentina">0</span>
+                    <span class="winner-crown" id="crown-argentina">👑</span>
+                </div>
+
+                <div class="winner-item" id="winner-chile">
+                    <div class="winner-flag flag" id="flag-chile-winner"></div>
+                    <span class="winner-score" id="score-chile">0</span>
+                    <span class="winner-crown" id="crown-chile">👑</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="race-track">
+            <div class="track">
+                <div class="country-label">Colombia</div>
+                <div class="start-line" id="start-colombia"></div>
+                <div class="car" id="car-colombia">
+                    <div class="flag" id="flag-colombia"></div>
+                </div>
+                <div class="finish-line" id="finish-colombia"></div>
+                <div class="finish-line2" id="finish-colombia2"></div>
+            </div>
+            <div class="track">
+                <div class="country-label">México</div>
+                <div class="start-line" id="start-mexico"></div>
+                <div class="car" id="car-mexico">
+                    <div class="flag" id="flag-mexico"></div>
+                </div>
+                <div class="finish-line" id="finish-mexico"></div>
+                <div class="finish-line2" id="finish-mexico2"></div>
+
+            </div>
+            <div class="track">
+                <div class="country-label">España</div>
+                <div class="start-line" id="start-espana"></div>
+                <div class="car" id="car-espana">
+                    <div class="flag" id="flag-espana"></div>
+                </div>
+                <div class="finish-line" id="finish-espana"></div>
+                <div class="finish-line2" id="finish-espana2"></div>
+            </div>
+            <div class="track">
+                <div class="country-label">Argentina</div>
+                <div class="start-line" id="start-argentina"></div>
+                <div class="car" id="car-argentina">
+                    <div class="flag" id="flag-argentina"></div>
+                </div>
+                <div class="finish-line" id="finish-argentina"></div>
+                <div class="finish-line2" id="finish-argentina2"></div>
+            </div>
+            <div class="track">
+                <div class="country-label">Chile</div>
+                <div class="start-line" id="start-chile"></div>
+                <div class="car" id="car-chile">
+                    <div class="flag" id="flag-chile"></div>
+                </div>
+                <div class="finish-line" id="finish-chile"></div>
+                <div class="finish-line2" id="finish-chile2"></div>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <div class="controls-buttons">
+                <button onclick="simulateGift('colombia')">Regalo Colombia 🇨🇴</button>
+                <button onclick="simulateGift('mexico')">Regalo México 🇲🇽</button>
+                <button onclick="simulateGift('espana')">Regalo España 🇪🇸</button>
+                <button onclick="simulateGift('argentina')">Regalo Argentina 🇦🇷</button>
+                <button onclick="simulateGift('chile')">Regalo Chile 🇨🇱</button>
+            </div>
+            <button onclick="resetRace()">Reiniciar Carrera</button>
+            </div>
+
+    </div>
+
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

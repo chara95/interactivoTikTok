@@ -1,0 +1,355 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea el contenido al principio verticalmente */
+    min-height: 100vh;
+    margin: 0;
+   
+    box-sizing: border-box;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+    font-size: 14px; /* Tamaño de fuente base más pequeño */
+}
+
+.panel-container {
+    background-color: #2b2b2b;
+    border-radius: 10px; /* Bordes un poco más pequeños */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Sombra más sutil */
+    padding: 10px; /* Padding interno reducido */
+    width: 100%; /* Ocupa casi todo el ancho disponible */
+  
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 10px; /* Margen reducido */
+    font-size: 1.5em; /* Tamaño de fuente del título */
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+}
+
+.race-track {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* Espacio entre cada pista reducido */
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.track {
+    width: 100%;
+    height: 40px; /* Altura de las pistas reducida */
+  /* Bordes un poco más pequeños */
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 8px; /* Padding interno de la pista reducido */
+    box-sizing: border-box;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    background-color: #444;
+}
+
+/* Estilos para el borde inferior animado de la pista */
+.track::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Grosor de la línea animada reducido */
+    background: repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.7) 0px,
+        rgba(255, 255, 255, 0.7) 20px, /* Longitud de los segmentos */
+        transparent 20px,
+        transparent 50px /* Espacio entre segmentos */
+    );
+    background-size: 50px 100%; /* Tamaño de un patrón completo */
+    animation: moveBorderLines 1s linear infinite;
+    z-index: 3;
+}
+
+@keyframes moveBorderLines {
+    from { background-position-x: 0; }
+    to { background-position-x: -50px; } /* Mueve por el tamaño de un patrón completo */
+}
+
+.country-label {
+    position: absolute;
+    left: 8px; /* Ajusta el left del label */
+    font-size: 1.1em; /* Tamaño de fuente del label */
+    font-weight: bold;
+    color: #fff;
+    z-index: 2;
+    width: 90px; /* Ancho para el label */
+    text-align: left;
+    white-space: nowrap; /* Evita que el texto se rompa */
+    overflow: hidden; /* Oculta el texto que se desborde */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
+}
+
+.car {
+    width: 60px; /* Ancho del carrito reducido */
+    height: 45px; /* Altura del carrito reducida */
+    position: absolute;
+    left: 110px; /* Posición inicial fija en píxeles. Ajustar según el label y la línea de inicio. */
+    top: 20%;
+    transform: translateY(-50%) scaleX(-1); /* Si el emoji mira a la derecha por defecto, este lo voltea */
+    transition: transform 0.1s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6em; /* Tamaño del emoji del carrito */
+    z-index: 1;
+}
+
+.car::after {
+    content: '🏎️'; /* Emoji de coche de carreras */
+    display: block;
+    font-size: 2.5em; /* Tamaño del emoji de coche */
+    line-height: 1;
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.7);
+}
+
+.start-line {
+    position: absolute;
+    left: 100px; /* Posición fija de la línea de inicio. Ajustar para que el carro empiece aquí */
+    top: 0;
+    bottom: 0;
+    width: 6px; /* Ancho de la línea reducido */
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 3px, /* Ajusta el tamaño de los cuadros */
+        #000 3px,
+        #000 6px
+    );
+    border-right: 1px solid #ffaa00; /* Borde más fino */
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.7); /* Brillo más sutil */
+    z-index: 0;
+}
+
+.finish-line {
+    position: absolute;
+    right: 28px; /* Posición fija de la meta desde la DERECHA. */
+    top: 0;
+    bottom: 0;
+    width: 6px; /* Ancho de la línea reducido */
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 3px,
+        #000 3px,
+        #000 6px
+    );
+    border-left: 1px solid #00ffff; /* Borde más fino */
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.7); /* Brillo más sutil */
+    z-index: 0;
+}
+
+.finish-line2 {
+    position: absolute;
+    right: 8px; /* Posición fija de la meta desde la DERECHA. */
+    top: 0;
+    bottom: 0;
+    width: 20px; /* Ancho de la línea reducido */
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 3px,
+        #fff 3px,
+        #fff 6px
+    );
+  
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.7); /* Brillo más sutil */
+    z-index: 0;
+}
+
+/* --- ESTILOS PARA LAS BANDERAS (en carritos y panel de ganadores) --- */
+.flag {
+    width: 20px; /* Ancho de bandera en el carrito reducido */
+    height: 9px; /* Altura de bandera en el carrito reducida */
+    top: 0px; 
+    left: 75px; 
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Estilos para las banderas de Colombia */
+#flag-colombia, #flag-colombia-winner {
+    background: linear-gradient(to bottom,
+        #fcd116 0%, #fcd116 50%,
+        #003893 50%, #003893 75%,
+        #ce1126 75%, #ce1126 100%
+    );
+}
+
+/* Estilos para las banderas de México */
+#flag-mexico, #flag-mexico-winner {
+    background: linear-gradient(to right,
+        #006847 0%, #006847 33.3%,
+        #FFFFFF 33.3%, #FFFFFF 66.6%,
+        #CE1126 66.6%, #CE1126 100%
+    );
+}
+
+/* Estilos para las banderas de España */
+#flag-espana, #flag-espana-winner {
+    background: linear-gradient(to bottom,
+        #AA151B 0%, #AA151B 25%,
+        #FABD00 25%, #FABD00 75%,
+        #AA151B 75%, #AA151B 100%
+    );
+}
+
+/* Estilos para las banderas de Argentina */
+#flag-argentina, #flag-argentina-winner {
+    background: linear-gradient(to bottom,
+        #74ACDF 0%, #74ACDF 33.3%,
+        #FFFFFF 33.3%, #FFFFFF 66.6%,
+        #74ACDF 66.6%, #74ACDF 100%
+    );
+}
+
+/* Estilos para las banderas de Chile */
+#flag-chile, #flag-chile-winner {
+    background:
+        /* Mitad superior blanca */
+        linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 50%, transparent 50%, transparent 100%),
+        /* Mitad inferior roja */
+        linear-gradient(to bottom, transparent 50%, #D52B1E 50%, #D52B1E 100%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* CUADRADO AZUL de Chile (en la esquina superior izquierda) */
+#flag-chile::before, #flag-chile-winner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.3%; /* Un tercio del ancho */
+    height: 50%; /* Mitad del alto */
+    background-color: #0A3161; /* Azul */
+    z-index: 1;
+}
+
+
+
+/* --- ESTILOS PARA EL PANEL DE GANADORES --- */
+.winners-panel {
+    width: 100%;
+    background-color: #054403;
+    border-radius: 8px; /* Bordes más pequeños */
+    padding: 5px 10px; /* Padding reducido */
+    margin-bottom: 0px; /* Margen reducido */
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid #f5f3f3;
+    box-sizing: border-box;
+}
+
+.winners-panel h2 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 5px; /* Margen reducido */
+    font-size: 1.3em; /* Tamaño de fuente del título de ganadores */
+}
+
+.winners-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.winner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px 5px; /* Espacio entre items reducido */
+    position: relative;
+}
+
+.winner-flag {
+    width: 22px; /* Ancho de banderas de ganadores reducido */
+    height: 14px; /* Altura de banderas de ganadores reducida */
+    left: -20px; 
+    top: 15px;
+    border: 1px solid #777;
+    border-radius: 2px; /* Bordes más pequeños */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
+.winner-score {
+    color: #fff;
+    font-size: 0.9em; /* Tamaño de fuente del score */
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+.winner-crown {
+    position: absolute;
+    top: -10px; /* Ajusta la posición de la corona */
+    font-size: 1em; /* Tamaño de la corona reducido */
+    visibility: hidden;
+    text-shadow: 0 0 3px rgba(255, 255, 0, 0.7);
+}
+
+/* --- ESTILOS PARA EL PANEL DE CONTROLES --- */
+.controls-panel {
+    width: 100%;
+    background-color: #222;
+    border-radius: 8px; /* Bordes más pequeños */
+    padding: 8px 10px; /* Padding reducido */
+    margin-top: 10px; /* Margen reducido */
+    text-align: center;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid #555;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px; /* Espacio entre botones reducido */
+    margin-bottom: 6px; /* Margen reducido */
+}
+
+.controls-panel button {
+    padding: 6px 10px; /* Padding de los botones reducido */
+    font-size: 0.8em; /* Tamaño de fuente de los botones reducido */
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px; /* Bordes más pequeños */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.controls-panel button:hover {
+    background-color: #0056b3;
+}
+
