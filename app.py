@@ -8,10 +8,15 @@ from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 
 app = Flask(__name__)
-# Permitir CORS desde cualquier origen para desarrollo.
-# En producción, considera restringir a un origen específico.
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+# Configuración de CORS
+# Especifica el origen exacto de tu frontend (Live Server)
+# Si vas a usar Live Server con puerto 3000, entonces 'http://127.0.0.1:3000'
+# Si Live Server usa otro puerto, pon ese.
+# Si quieres que sea más flexible (ej. para pruebas), puedes usar un comodín (pero no recomendado para producción real)
+CORS(app, resources={r"/*": {"origins": ["http://127.0.0.1:3000", "https://interactivotiktok.onrender.com"]}})
+
+# Para Flask-SocketIO, también debemos especificar allowed_origins
+socketio = SocketIO(app, cors_allowed_origins=["http://127.0.0.1:3000", "https://interactivotiktok.onrender.com"], async_mode='eventlet')
 
 @app.route('/')
 def index():
@@ -85,10 +90,6 @@ if __name__ == '__main__':
     # En desarrollo local
     socketio.run(app, debug=True, port=5000)
 else:
-    # Este bloque se ejecuta cuando la aplicación es iniciada por un servidor WSGI como Gunicorn.
-    # Flask-SocketIO se inicializará para usar Eventlet si lo encuentra.
-    # No necesitas llamar a socketio.run() aquí, Gunicorn lo manejará.
-    pass # Simplemente deja este bloque como está o incluso puedes eliminarlo si solo tienes el if __name__
-
+    pass
 
   

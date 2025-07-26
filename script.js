@@ -143,7 +143,7 @@ function resetRace() {
 
 
 // --- CONEXIÓN A TU SERVIDOR FLASK VIA SOCKET.IO ---
-const FLASK_SOCKETIO_URL = "http://localhost:5000"; // Asegúrate de que este puerto coincida con tu app.py
+const FLASK_SOCKETIO_URL = "https://interactivotiktok.onrender.com"; // Asegúrate de que este puerto coincida con tu app.py
 let socket;
 
 function connectToBackend() {
