@@ -4,4 +4,4 @@ python-engineio
 Flask-Cors
 simple-websocket
 gunicorn  
-geventwebsocket
+eventlet
